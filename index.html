@@ -188,6 +188,74 @@
         font-size: 1.5rem;
       }
 
+      /* Fun Facts Bar */
+      .fun-facts-bar {
+        background: rgba(168, 232, 255, 0.1);
+        border-top: 1px solid var(--accent-blue);
+        border-bottom: 1px solid var(--accent-blue);
+        padding: 1rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .fun-fact-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .fun-fact-icon {
+        color: var(--accent-blue);
+        font-size: 1.2rem;
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .fun-fact-label {
+        color: var(--accent-blue);
+        font-weight: 600;
+        font-size: 0.95rem;
+        position: absolute;
+        left: 4rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .fun-fact-text {
+        color: var(--lightest-blue);
+        font-size: 0.95rem;
+        line-height: 1.4;
+        opacity: 0;
+        animation: fadeInOut 5s infinite;
+        margin-left: 8rem;
+        margin-right: 2rem;
+        text-align: left;
+      }
+
+      @keyframes fadeInOut {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        10%,
+        90% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+      }
+
       /* Hero Section */
       .hero {
         text-align: center;
@@ -538,6 +606,21 @@
         .footer-links li {
           margin: 0.5rem 0;
         }
+
+        /* Fun Facts Bar Mobile */
+        .fun-fact-icon {
+          left: 1rem;
+        }
+
+        .fun-fact-label {
+          left: 2.5rem;
+        }
+
+        .fun-fact-text {
+          margin-left: 6rem;
+          margin-right: 1rem;
+          font-size: 0.85rem;
+        }
       }
     </style>
   </head>
@@ -567,6 +650,18 @@
         </div>
       </div>
     </header>
+
+    <!-- Fun Facts Bar -->
+    <div class="fun-facts-bar">
+      <div class="fun-fact-content">
+        <i class="fas fa-lightbulb fun-fact-icon"></i>
+        <span class="fun-fact-label">Fun Fact:</span>
+        <div class="fun-fact-text" id="funFactText">
+          The Argo program is named after the ship Argo from Greek mythology —
+          companion to Jason and the Argonauts.
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -823,6 +918,72 @@
     </footer>
 
     <script>
+      // Fun Facts Array
+      const funFacts = [
+        "The Argo program is named after the ship Argo from Greek mythology — companion to Jason and the Argonauts.",
+        "Each Argo float drifts for about 10 days, then dives to 2,000 meters depth before resurfacing to transmit data via satellite.",
+        "Argo floats are robotic oceanographers — they collect temperature, salinity, and sometimes oxygen, nitrate, and chlorophyll.",
+        "Over 4,000 active floats are currently roaming the world's oceans (and growing!).",
+        "Combined, Argo floats cover more ocean area daily than all ships and research cruises put together.",
+        "The Argo dataset is updated in near real-time — typically within 24 hours of a float surfacing.",
+        "Floats last around 4–5 years, delivering hundreds of profiles in their lifetime.",
+        "Data from Argo is stored in NetCDF format, making it compact and machine-readable.",
+        "Argo floats are battery powered — and some use lithium packs the size of a soda can to survive for years.",
+        "The Deep Argo mission extends float dives from 2,000 m to 6,000 m, covering the entire ocean depth.",
+        "BGC (BioGeoChemical) Argo floats can measure pH, oxygen, nitrate, and even detect phytoplankton blooms.",
+        "Argo floats communicate with satellites like Iridium — the same network that powers satellite phones.",
+        "The program started in 2000 with just a few floats and is now a global network.",
+        "On average, a float travels 200 km during its 10-day drift cycle.",
+        "Argo has collected over 2 million vertical profiles, the largest single source of ocean climate data.",
+        "This dataset is open and free — anyone can download and analyze it.",
+        "Argo floats have revealed deep ocean warming, helping confirm human-driven climate change.",
+        "The floats are designed to be biofouling resistant, so barnacles and algae don't mess up the sensors.",
+        "Each float costs about $20,000–30,000, far cheaper than running a research ship.",
+        "Some floats are deployed from cargo ships, sailboats, and even airplanes.",
+        "The Indian Ocean has fewer floats compared to the Pacific — a gap current projects are trying to fix.",
+        "Floats can survive in ice-covered oceans, popping up in gaps between sea ice to transmit data.",
+        "They drift at a depth called the 'parking depth' (usually 1,000 m), then profile to 2,000 m.",
+        "Argo data feeds directly into weather and climate models, improving monsoon and cyclone predictions.",
+        "Fun twist: an Argo float once surfaced near a fisherman's net, who thought he'd caught an alien robot!",
+        "The first Argo floats were launched in 1999–2000, as part of an international trial.",
+        "Argo is a UNESCO-recognized global observing system, contributing to the Global Climate Observing System (GCOS).",
+        "More than 30 countries contribute floats, ships, and funding to keep the network running.",
+        "The average profile resolution is 1 dbar (roughly 1 meter) near the surface and coarser (~2–5 dbar) at depth.",
+        "Floats use piston-driven pumps to change buoyancy by moving mineral oil between an internal reservoir and an external bladder.",
+        "Each float has a pressure sensor accurate to within a few decibars — even at 2000 m depth.",
+        "Floats drift at a 'parking depth' (usually 1000 m), which makes them follow mid-ocean currents.",
+        "In total, floats have traveled hundreds of millions of kilometers — basically exploring the oceans more than any ship could.",
+        "The Southern Ocean is one of the toughest areas for floats due to ice cover, yet hundreds operate there successfully.",
+        "Deep Argo floats use titanium pressure housings to survive 6000 m pressures (~600 atmospheres).",
+        "Floats transmit their data in just a few minutes before diving again.",
+        "The fastest turnaround from float to public dataset can be under 6 hours.",
+        "Argo data has helped identify marine heatwaves (like the 'Blob' in the North Pacific).",
+        "Some floats are designed to detect carbon fluxes, a critical piece of the climate cycle.",
+        "Over 100 peer-reviewed papers per year now use Argo data.",
+        "The Argo network has revealed that over 90% of Earth's excess heat from climate change is stored in the ocean.",
+        "Floats avoid shipping lanes and coasts by design, but occasionally wash ashore, where curious locals discover them.",
+        "Each float has a unique ID number, tracked globally so data users know exactly which float produced which profile.",
+        "Floats are built to automatically shut down if they malfunction, to avoid sending corrupted data.",
+        "The data quality control system uses both real-time and delayed-mode processing, with human experts reviewing samples.",
+        "The Argo dataset is stored in two Global Data Assembly Centers: in Brest, France, and Monterey, USA.",
+        "All floats undergo calibration checks before deployment, often at specialized labs.",
+        "The average float weight is 20–30 kg, light enough for two people to handle on deck.",
+        "Many floats are deployed by commercial vessels using simple cranes — no fancy research ship needed.",
+        "Argo's data is so critical that the IPCC (Intergovernmental Panel on Climate Change) directly cites it in climate assessment reports.",
+      ];
+
+      let currentFactIndex = 0;
+      const funFactElement = document.getElementById("funFactText");
+
+      // Function to update fun fact
+      function updateFunFact() {
+        funFactElement.textContent = funFacts[currentFactIndex];
+        currentFactIndex = (currentFactIndex + 1) % funFacts.length;
+      }
+
+      // Start cycling through facts every 5 seconds
+      setInterval(updateFunFact, 5000);
+
       // Mobile Navigation Toggle
       const hamburger = document.querySelector(".hamburger");
       const navLinks = document.querySelector(".nav-links");
