@@ -193,7 +193,7 @@
         background: rgba(168, 232, 255, 0.1);
         border-top: 1px solid var(--accent-blue);
         border-bottom: 1px solid var(--accent-blue);
-        padding: 1rem 0;
+        padding: 0.6rem 0;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -204,7 +204,7 @@
         margin: 0 auto;
         padding: 0 2rem;
         position: relative;
-        min-height: 3rem;
+        min-height: 2.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -212,7 +212,7 @@
 
       .fun-fact-icon {
         color: var(--accent-blue);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         position: absolute;
         left: 2rem;
         top: 50%;
@@ -222,20 +222,20 @@
       .fun-fact-label {
         color: var(--accent-blue);
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         position: absolute;
-        left: 4rem;
+        left: 3.5rem;
         top: 50%;
         transform: translateY(-50%);
       }
 
       .fun-fact-text {
         color: var(--lightest-blue);
-        font-size: 0.95rem;
-        line-height: 1.4;
+        font-size: 0.9rem;
+        line-height: 1.3;
         opacity: 0;
         animation: fadeInOut 5s infinite;
-        margin-left: 8rem;
+        margin-left: 6.5rem;
         margin-right: 2rem;
         text-align: left;
       }
@@ -608,18 +608,26 @@
         }
 
         /* Fun Facts Bar Mobile */
+        .fun-fact-content {
+          min-height: 2rem;
+          padding: 0 1rem;
+        }
+
         .fun-fact-icon {
           left: 1rem;
+          font-size: 1rem;
         }
 
         .fun-fact-label {
-          left: 2.5rem;
+          left: 2.2rem;
+          font-size: 0.85rem;
         }
 
         .fun-fact-text {
-          margin-left: 6rem;
+          margin-left: 5rem;
           margin-right: 1rem;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
+          line-height: 1.2;
         }
       }
     </style>
