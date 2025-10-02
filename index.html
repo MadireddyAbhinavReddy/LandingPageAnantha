@@ -424,9 +424,19 @@
       }
 
       /* Special styling only for research section cards */
+      #research .card {
+        position: relative;
+        padding-bottom: 80px; /* Space for the button */
+      }
+
       #research .card-content {
-        justify-content: space-between;
-        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 10px; /* Reduced space between text and button area */
+      }
+
+      #research .card-content p {
+        margin-bottom: 0.8rem; /* Reduced space after text */
       }
 
       .card h3 {
@@ -475,8 +485,17 @@
 
       /* Special button positioning only for research section */
       #research .card-button {
-        margin-top: auto;
-        flex-shrink: 0;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        margin: 0;
+        width: calc(100% - 40px);
+      }
+
+      /* Ensure consistent spacing for cards without images */
+      #research .card-content[style*="padding-top"] {
+        padding-top: 1.5rem !important;
       }
 
       .card-button:hover {
@@ -741,7 +760,12 @@
                   <strong>📊 User Experience:</strong><br />
                   • Download capabilities & incognito mode<br />
                   • Chat history & new session management<br />
-                  • Further analysis & edit/regenerate options
+                  • Further analysis & edit/regenerate options<br /><br />
+
+                  <strong>⚡ Infrastructure & Performance:</strong><br />
+                  • Redis queues for efficient task management<br />
+                  • Automated cron scripts for zero-latency server uptime<br />
+                  • Always-on server with formatted keep-alive requests
                 </p>
                 <div class="card-button">
                   Launch App <i class="fas fa-external-link-alt"></i>
@@ -975,7 +999,11 @@
         <div class="docs-grid">
           <div class="card">
             <a href="https://ray.yorksj.ac.uk/id/eprint/11412/" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img
+                src="assets/RagForWebsite.png"
+                alt="RAG for Website-Based Chatbots"
+              />
+              <div class="card-content">
                 <h3>RAG for Website-Based Chatbots</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -991,7 +1019,11 @@
           </div>
           <div class="card">
             <a href="https://arxiv.org/abs/2304.11015" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img
+                src="assets/DinSQL.png"
+                alt="DIN-SQL: Text-to-SQL with Self-Correction"
+              />
+              <div class="card-content">
                 <h3>DIN-SQL: Text-to-SQL with Self-Correction</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1007,7 +1039,11 @@
           </div>
           <div class="card">
             <a href="https://arxiv.org/abs/2310.11511" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img
+                src="assets/SelfRAG.png"
+                alt="Self-RAG: Learning to Retrieve & Generate"
+              />
+              <div class="card-content">
                 <h3>Self-RAG: Learning to Retrieve & Generate</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1023,7 +1059,8 @@
           </div>
           <div class="card">
             <a href="https://arxiv.org/abs/2310.02031" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img src="assets/OceanGPT.png" alt="Ocean GPT" />
+              <div class="card-content">
                 <h3>Ocean GPT</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1039,7 +1076,11 @@
           </div>
           <div class="card">
             <a href="https://arxiv.org/abs/1912.00682" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img
+                src="assets/AnamolyDetection.png"
+                alt="Maritime Anomaly Detection"
+              />
+              <div class="card-content">
                 <h3>Maritime Anomaly Detection</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1071,7 +1112,8 @@
         <div class="docs-grid">
           <div class="card">
             <a href="https://openai.com/index/whisper/" target="_blank">
-              <div class="card-content" style="padding-top: 2rem">
+              <img src="assets/WhisperBackground.png" alt="Whisper API" />
+              <div class="card-content">
                 <h3>Whisper API</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1090,7 +1132,8 @@
               href="https://docs.trychroma.com/docs/collections/manage-collections"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <img src="assets/ChromaBackground.png" alt="Chroma DB" />
+              <div class="card-content">
                 <h3>Chroma DB Documentation</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1125,7 +1168,7 @@
               href="https://www.coursera.org/learn/introduction-to-generative-ai?action=enroll"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Introduction to GenAI</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1147,7 +1190,7 @@
               href="https://www.coursera.org/learn/retrieval-augmented-generation-rag"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Retrieval Augmented Generation (RAG)</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1169,7 +1212,7 @@
               href="https://www.coursera.org/learn/retrieval-augmented-generation-rag"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Building Multimodal Search and RAG</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1191,7 +1234,7 @@
               href="https://aws.amazon.com/blogs/machine-learning/enterprise-grade-natural-language-to-sql-generation-using-llms-balancing-accuracy-latency-and-scale/"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Natural Language Queries to SQL</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1213,7 +1256,7 @@
               href="https://aws.amazon.com/what-is/retrieval-augmented-generation/"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>What is RAG?</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1235,7 +1278,7 @@
               href="https://www.oreilly.com/library/view/vector-databases/9781098177584/"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Vector Databases by Nitin Borwankar</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
@@ -1257,7 +1300,7 @@
               href="https://medium.com/@limeira.felipe94/a-beginners-guide-to-spatial-queries-with-postgresql-and-postgis-8128392f7bb6"
               target="_blank"
             >
-              <div class="card-content" style="padding-top: 2rem">
+              <div class="card-content">
                 <h3>Spatial Queries with PostgreSQL and PostGIS</h3>
                 <p>
                   <strong>Key Takeaways:</strong><br />
