@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anantha Launcher | Oceanographic AI Hub</title>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -415,6 +421,10 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+      }
+
+      /* Special styling only for research section cards */
+      #research .card-content {
         justify-content: space-between;
         min-height: 100%;
       }
@@ -429,6 +439,9 @@
         color: var(--light-blue);
         margin-bottom: 1rem;
         flex-grow: 1;
+        overflow: visible;
+        white-space: normal;
+        word-wrap: break-word;
       }
 
       .card-text-wrapper {
@@ -457,6 +470,11 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        margin-top: 1rem;
+      }
+
+      /* Special button positioning only for research section */
+      #research .card-button {
         margin-top: auto;
         flex-shrink: 0;
       }
@@ -706,10 +724,24 @@
             <a href="https://anantha-sirius.vercel.app" target="_blank">
               <img src="./main.png" alt="Main App" />
               <div class="card-content">
-                <h3>Anantha Conversational Interface</h3>
+                <h3>🚀 Anantha Conversational Interface - UPDATED</h3>
                 <p>
-                  AI-powered oceanographic assistant for exploring ARGO float
-                  data with natural language
+                  <strong>🎯 Core Features:</strong><br />
+                  • Voice input with 95% confidence & auto-off<br />
+                  • Real-time, scalable cloud deployment<br />
+                  • Geospatial visualization & context awareness<br />
+                  • Audio-to-text & text-to-speech capabilities<br /><br />
+
+                  <strong>🌐 Advanced Capabilities:</strong><br />
+                  • Multi-language support (English + native)<br />
+                  • 4 interaction modes & multimodal inputs<br />
+                  • Proactive facts & reinforcement learning<br />
+                  • Comprehensive settings & plot customization<br /><br />
+
+                  <strong>📊 User Experience:</strong><br />
+                  • Download capabilities & incognito mode<br />
+                  • Chat history & new session management<br />
+                  • Further analysis & edit/regenerate options
                 </p>
                 <div class="card-button">
                   Launch App <i class="fas fa-external-link-alt"></i>
@@ -1333,55 +1365,67 @@
 
       // Equal Height Cards Function
       function equalizeCardHeights() {
-        // Get all card containers
-        const cardContainers = [
-          ".apps-row",
-          "#ppt-video .apps-row",
-          "#docs .docs-grid",
-          "#research .docs-grid",
-        ];
+        console.log(
+          "Running equalizeCardHeights for Research & References only..."
+        );
 
-        cardContainers.forEach((containerSelector) => {
-          const containers = document.querySelectorAll(containerSelector);
-
-          containers.forEach((container) => {
-            const cards = container.querySelectorAll(".card");
-            if (cards.length === 0) return;
-
-            // Reset heights first
-            cards.forEach((card) => {
-              card.style.height = "auto";
-              card.style.minHeight = "auto";
-            });
-
-            // Wait for layout to settle
-            setTimeout(() => {
-              // Calculate the maximum height
-              let maxHeight = 0;
-              cards.forEach((card) => {
-                const cardHeight = card.getBoundingClientRect().height;
-                if (cardHeight > maxHeight) {
-                  maxHeight = cardHeight;
-                }
-              });
-
-              // Set all cards to the maximum height with some padding
-              const finalHeight = maxHeight + 20; // Add 20px buffer
-              cards.forEach((card) => {
-                card.style.height = finalHeight + "px";
-                card.style.minHeight = finalHeight + "px";
-              });
-            }, 50);
-          });
-        });
+        // Only handle research section - let other sections have natural heights
+        const researchGrid = document.querySelector("#research .docs-grid");
+        if (researchGrid) {
+          console.log("Processing research grid");
+          equalizeRowCards(researchGrid, "research-grid");
+        }
       }
 
-      // Run equalization after page load and images load
+      function equalizeRowCards(container, containerName) {
+        const cards = container.querySelectorAll(".card");
+        if (cards.length === 0) {
+          console.log(`No cards found in ${containerName}`);
+          return;
+        }
+
+        console.log(`Found ${cards.length} cards in ${containerName}`);
+
+        // Reset heights first
+        cards.forEach((card) => {
+          card.style.height = "auto";
+          card.style.minHeight = "auto";
+        });
+
+        // Calculate max height after a brief delay
+        setTimeout(() => {
+          let maxHeight = 0;
+          cards.forEach((card, index) => {
+            const height = card.getBoundingClientRect().height;
+            console.log(`${containerName} card ${index + 1}: ${height}px`);
+            if (height > maxHeight) {
+              maxHeight = height;
+            }
+          });
+
+          const finalHeight = maxHeight + 20;
+          console.log(`Setting ${containerName} cards to ${finalHeight}px`);
+
+          cards.forEach((card) => {
+            card.style.height = finalHeight + "px";
+            card.style.minHeight = finalHeight + "px";
+          });
+        }, 100);
+      }
+
+      // Run equalization immediately and after page load
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(equalizeCardHeights, 100);
+      });
+
       window.addEventListener("load", () => {
         setTimeout(equalizeCardHeights, 200);
         // Run again after images might have loaded
         setTimeout(equalizeCardHeights, 1000);
       });
+
+      // Also run it immediately when script loads
+      setTimeout(equalizeCardHeights, 500);
 
       // Re-run on window resize with debouncing
       let resizeTimeout;
