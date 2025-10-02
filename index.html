@@ -334,6 +334,130 @@
         border-radius: 2px;
       }
 
+      /* Latest Updates Section */
+      .updates-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .update-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid var(--accent-blue);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(168, 232, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .update-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(168, 232, 255, 0.1), transparent);
+        animation: updateShine 3s ease-in-out infinite;
+      }
+
+      @keyframes updateShine {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: 100%; }
+      }
+
+      .update-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .update-header h3 {
+        color: var(--accent-blue);
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .update-badge {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .update-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .update-category h4 {
+        color: var(--lightest-blue);
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        border-bottom: 1px solid var(--silver);
+        padding-bottom: 0.3rem;
+      }
+
+      .update-category ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .update-category li {
+        color: var(--light-blue);
+        padding: 0.3rem 0;
+        position: relative;
+        padding-left: 1.2rem;
+      }
+
+      .update-category li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-blue);
+        font-weight: bold;
+      }
+
+      .update-footer {
+        text-align: center;
+        border-top: 1px solid var(--silver);
+        padding-top: 1.5rem;
+      }
+
+      .update-button {
+        background: linear-gradient(45deg, var(--accent-blue), #00d4ff);
+        color: #020d1d;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(168, 232, 255, 0.3);
+      }
+
+      .update-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(168, 232, 255, 0.5);
+        background: linear-gradient(45deg, #00d4ff, var(--accent-blue));
+      }
+
       /* Cards Layout */
       .apps {
         display: grid;
@@ -426,17 +550,17 @@
       /* Special styling only for research section cards */
       #research .card {
         position: relative;
-        padding-bottom: 80px; /* Space for the button */
+        padding-bottom: 90px; /* Balanced space for the button */
       }
 
       #research .card-content {
         display: flex;
         flex-direction: column;
-        padding-bottom: 10px; /* Reduced space between text and button area */
+        padding-bottom: 20px; /* Balanced space between text and button area */
       }
 
       #research .card-content p {
-        margin-bottom: 0.8rem; /* Reduced space after text */
+        margin-bottom: 1rem; /* Balanced space after text */
       }
 
       .card h3 {
@@ -486,11 +610,11 @@
       /* Special button positioning only for research section */
       #research .card-button {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
+        bottom: 15px; /* Gap from bottom of card */
+        left: 1.5rem;
+        right: 1.5rem;
         margin: 0;
-        width: calc(100% - 40px);
+        width: calc(100% - 3rem);
       }
 
       /* Ensure consistent spacing for cards without images */
@@ -732,6 +856,63 @@
         and all the services including presentations and documents
       </p>
     </div>
+
+    <!-- Latest Updates Section -->
+    <section id="latest-updates">
+      <h2 class="section-title">🆕 Latest Updates</h2>
+      <div class="updates-container">
+        <div class="update-card">
+          <div class="update-header">
+            <h3>🚀 Anantha Conversational Interface - Major Update</h3>
+            <span class="update-badge">NEW</span>
+          </div>
+          <div class="update-content">
+            <div class="update-category">
+              <h4>🎯 Core Features</h4>
+              <ul>
+                <li>Voice input with 95% confidence & auto-off</li>
+                <li>Real-time, scalable cloud deployment</li>
+                <li>Geospatial visualization & context awareness</li>
+                <li>Audio-to-text & text-to-speech capabilities</li>
+              </ul>
+            </div>
+            
+            <div class="update-category">
+              <h4>🌐 Advanced Capabilities</h4>
+              <ul>
+                <li>Multi-language support (English + native)</li>
+                <li>4 interaction modes & multimodal inputs</li>
+                <li>Proactive facts & reinforcement learning</li>
+                <li>Comprehensive settings & plot customization</li>
+              </ul>
+            </div>
+            
+            <div class="update-category">
+              <h4>📊 User Experience</h4>
+              <ul>
+                <li>Download capabilities & incognito mode</li>
+                <li>Chat history & new session management</li>
+                <li>Further analysis & edit/regenerate options</li>
+              </ul>
+            </div>
+            
+            <div class="update-category">
+              <h4>⚡ Infrastructure & Performance</h4>
+              <ul>
+                <li>Redis queues for efficient task management</li>
+                <li>Automated cron scripts for zero-latency server uptime</li>
+                <li>Always-on server with formatted keep-alive requests</li>
+              </ul>
+            </div>
+          </div>
+          <div class="update-footer">
+            <a href="https://anantha-sirius.vercel.app" target="_blank" class="update-button">
+              Try Latest Version <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Apps Section -->
     <section id="apps">
@@ -1168,6 +1349,7 @@
               href="https://www.coursera.org/learn/introduction-to-generative-ai?action=enroll"
               target="_blank"
             >
+              <img src="assets/IntroductionToGenAI.png" alt="Introduction to GenAI" />
               <div class="card-content">
                 <h3>Introduction to GenAI</h3>
                 <p>
@@ -1190,6 +1372,7 @@
               href="https://www.coursera.org/learn/retrieval-augmented-generation-rag"
               target="_blank"
             >
+              <img src="assets/RAGCourse.png" alt="Retrieval Augmented Generation (RAG)" />
               <div class="card-content">
                 <h3>Retrieval Augmented Generation (RAG)</h3>
                 <p>
@@ -1209,9 +1392,10 @@
           </div>
           <div class="card">
             <a
-              href="https://www.coursera.org/learn/retrieval-augmented-generation-rag"
+              href="https://www.coursera.org/projects/building-multimodal-search-and-rag"
               target="_blank"
             >
+              <img src="assets/BuildingMultiModalRAG.png" alt="Building Multimodal Search and RAG" />
               <div class="card-content">
                 <h3>Building Multimodal Search and RAG</h3>
                 <p>
@@ -1234,6 +1418,7 @@
               href="https://aws.amazon.com/blogs/machine-learning/enterprise-grade-natural-language-to-sql-generation-using-llms-balancing-accuracy-latency-and-scale/"
               target="_blank"
             >
+              <img src="assets/aws.png" alt="Natural Language Queries to SQL" />
               <div class="card-content">
                 <h3>Natural Language Queries to SQL</h3>
                 <p>
@@ -1256,6 +1441,7 @@
               href="https://aws.amazon.com/what-is/retrieval-augmented-generation/"
               target="_blank"
             >
+              <img src="assets/WhatIsRAG.png" alt="What is RAG?" />
               <div class="card-content">
                 <h3>What is RAG?</h3>
                 <p>
@@ -1278,6 +1464,7 @@
               href="https://www.oreilly.com/library/view/vector-databases/9781098177584/"
               target="_blank"
             >
+              <img src="assets/VectorDatabases.png" alt="Vector Databases by Nitin Borwankar" />
               <div class="card-content">
                 <h3>Vector Databases by Nitin Borwankar</h3>
                 <p>
@@ -1300,6 +1487,7 @@
               href="https://medium.com/@limeira.felipe94/a-beginners-guide-to-spatial-queries-with-postgresql-and-postgis-8128392f7bb6"
               target="_blank"
             >
+              <img src="assets/BegginersGuide.png" alt="Spatial Queries with PostgreSQL and PostGIS" />
               <div class="card-content">
                 <h3>Spatial Queries with PostgreSQL and PostGIS</h3>
                 <p>
